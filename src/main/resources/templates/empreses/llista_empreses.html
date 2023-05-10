@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div>
+  <h3>Empreses</h3>
+  <table>
+    <thead class="thead-dark">
+    <tr>
+      <th>Nom</th>
+      <th>Adreça</th>
+      <th>Cicle</th>
+      <th>Nombre d'alumnes fent pràctiques</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="empresa : ${empreses}">
+      <td th:text="${empresa.nom}"/>
+      <td th:text="${empresa.adreca}"/>
+      <td th:text="${empresa.cicle}"/>
+      <td th:text="${empresa.numAlumnesFentPractiques}"/>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

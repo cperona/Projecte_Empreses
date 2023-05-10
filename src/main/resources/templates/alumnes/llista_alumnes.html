@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div>
+  <h3>Alumnes</h3>
+  <table>
+    <thead class="thead-dark">
+    <tr>
+      <th>Nom</th>
+      <th>Cognoms</th>
+      <th>Cicle</th>
+      <th>Modalitat</th>
+      <th>Estat Practiques</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="alumne : ${alumnes}">
+      <td th:text="${alumne.nom}"/>
+      <td th:text="${alumne.cognoms}"/>
+      <td th:text="${alumne.cicle}"/>
+      <td th:text="${alumne.modalitat}"/>
+      <td th:text="${alumne.estatPractiques}"/>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
