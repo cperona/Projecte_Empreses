@@ -9,7 +9,8 @@ import jakarta.persistence.Id;
 public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int cif;
+    private long id;
+    private String cif;
     private String nom;
     private String adreca;
     private String cicle;
@@ -18,7 +19,8 @@ public class Empresa {
     public Empresa() {
     }
 
-    public Empresa(int cif, String nom, String adreca, String cicle, int numAlumnesFentPractiques) {
+    public Empresa(long id, String cif, String nom, String adreca, String cicle, int numAlumnesFentPractiques) {
+        this.id = id;
         this.cif = cif;
         this.nom = nom;
         this.adreca = adreca;
@@ -26,11 +28,19 @@ public class Empresa {
         this.numAlumnesFentPractiques = numAlumnesFentPractiques;
     }
 
-    public int getCif() {
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getCif() {
         return cif;
     }
 
-    public void setCif(int cif) {
+    public void setCif(String cif) {
         this.cif = cif;
     }
 

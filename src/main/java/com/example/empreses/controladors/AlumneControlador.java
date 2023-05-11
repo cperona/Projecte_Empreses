@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("api")
 public class AlumneControlador {
@@ -30,6 +32,11 @@ public class AlumneControlador {
 
     @PostMapping("alumnes/alta")
     public String altaAlumnes(Alumne alumne, Model model) {
+        //Validació de dades del formulari
+        List<Alumne> alumnes = repositoriAlumnes.findAlumneByDni(alumne.getDni());
+        if (alumnes.size() > 0) {
+            return "alumnes/ja_existeix_alumne";
+        }
         repositoriAlumnes.save(alumne);
         //fem redirecció per a evitar que s'envi el formulari més d'un cop
         return "redirect:/api/alumnes";

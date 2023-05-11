@@ -10,6 +10,7 @@ public class Alumne {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    private String dni;
     private String nom;
     private String cognoms;
     private String cicle;
@@ -19,7 +20,9 @@ public class Alumne {
     public Alumne() {
     }
 
-    public Alumne(String nom, String cognoms, String cicle, String modalitat, String estatPractiques) {
+    public Alumne(long id, String dni, String nom, String cognoms, String cicle, String modalitat, String estatPractiques) {
+        this.id = id;
+        this.dni = dni;
         this.nom = nom;
         this.cognoms = cognoms;
         this.cicle = cicle;
@@ -33,6 +36,14 @@ public class Alumne {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getNom() {

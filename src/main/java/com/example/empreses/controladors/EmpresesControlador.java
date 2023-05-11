@@ -1,5 +1,6 @@
 package com.example.empreses.controladors;
 
+import com.example.empreses.entitats.Alumne;
 import com.example.empreses.entitats.Empresa;
 import com.example.empreses.repositoris.EmpresaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("api")
@@ -30,6 +33,11 @@ public class EmpresesControlador {
 
     @PostMapping("empreses/alta")
     public String altaEmpresa(Empresa empresa, Model model) {
+        //Validació de dades del formulari
+        List<Alumne> alumnes = repositoriEmpreses.findAlumneByCif(empresa.getCif());
+        if (alumnes.size() > 0) {
+            return "empreses/ja_existeix_empresa";
+        }
         repositoriEmpreses.save(empresa);
         //fem redirecció per a evitar que s'envi el formulari més d'un cop
         return "redirect:/api/empreses";
